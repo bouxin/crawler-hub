@@ -111,4 +111,6 @@ class ScrapyDemoDownloaderMiddleware:
 
 class RequestProxyMiddleware:
     def process_request(self, request, spider):
-        request.meta['proxy'] = proxy_util.random_proxy()
+        proxy = proxy_util.random_proxy()
+        if proxy:
+            request.meta['proxy'] = proxy
